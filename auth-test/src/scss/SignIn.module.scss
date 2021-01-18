@@ -1,0 +1,50 @@
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+.wrap{ width:100vw; height: 100vh; background: #272727; }
+.container{
+    width: 375px;
+    margin: 0 auto;
+    position: relative;
+    .text{
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        color: #fff;
+        font-weight: 500; // medium
+    }
+    .title{
+        width: 100%; height: 48px;
+        border-bottom: solid 1px #fff;
+        position: relative;
+        .login{
+            color: #fff;
+        }
+    }
+
+    .content{
+        width: 328px;
+        margin: 0 auto;
+    }
+
+
+    .sign-btn{
+        margin-top: 15px;
+        width: 328px; height: 56px;
+        background: #FECD4A;
+        border:none;
+        border-radius: 10px;
+        position: relative;
+        left: 50%; transform: translateX(-50%);
+        .sign{
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-weight: 500;
+            font-size: 20px;
+        }
+    }
+}
