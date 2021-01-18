@@ -1,8 +1,8 @@
 // API를 요청하고 뉴스 데이터가 들어 있는 배열을 컴포넌트 배열로 변환하여 렌더링 해주는 컴포넌트
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from './styled-components';
 import NewsItem from './NewsItem';
-import axios from 'axios'
+import axios from './axios'
 
 // const NewsListBlock = styled.div`
 //     box-sizing: border-box;

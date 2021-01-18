@@ -1,6 +1,6 @@
 // 각 뉴스 정보를 보여주는 컴포넌트
 import React from 'react';
-import styled from 'styled-components';
+import styled from './styled-components';
 
 const NewsitemBlock = styled.div` 
     display: flex;
