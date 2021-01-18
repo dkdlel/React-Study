@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.PhoneArea {
+  margin-top: 50px;
+  .sendConfirm {
+    position: relative;
+    .sendBtn {
+      padding: 0;
+      cursor: pointer;
+      width: 120px;
+      height: 48px;
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      background: #f9f9f9;
+      border: 1px solid #ebebeb;
+      .btnText {
+        font-size: 16px;
+      }
+    }
+  }
+  .confirm {
+    position: relative;
+    .timeText{
+      position: absolute;
+      top: 50%;
+      right: 150px;
+      transform: translateY(-50%);
+      color: #555555;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .confirmBtn {
+      cursor: pointer;
+      width: 120px;
+      height: 48px;
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      background: #ffffff;
+      border: 1px solid #ebebeb;
+      .btnText {
+        font-size: 16px;
+      }
+    }
+  }
+}

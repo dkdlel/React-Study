@@ -1,0 +1,32 @@
+*{
+    margin: 0; padding: 0;
+}
+.switchBox{
+    width: 600px; height: 200px;
+    position: relative;
+    cursor: pointer;
+        .circleButton{
+            width: 200px; height: 200px;
+            background-color: gray;
+            border-radius: 50%;
+            position: absolute;
+            left: 0%;
+            transition: all ease 1s 0s;
+        }
+        .lineButton{
+            width: 400px; height: 100px;
+            background-color: lightgray;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            transform: translate(100px,-50%);
+        }
+        &.clicked{
+            .circleButton{
+                background-color: blue;
+                left: 100%;
+                transform: translate(-100%);
+                transition: all ease 1s 0s;
+            }
+        }
+}

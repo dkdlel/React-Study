@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.checkBoxListArea {
+  background: #F9F9F9;
+  .allCheckArea {
+    display: inline-block;
+    background: #fff;
+    width: 100%;
+    height: 56px;
+    padding: 0 20px;
+    font-weight: bold;
+    font-size: 18px;
+    border: solid 1px #DBDBDB;
+    border-bottom: none;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color: #444444;
+  }
+  .checkBoxItem {
+    height: 200px;
+    border: solid 1px #EBEBEB;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #777777;
+  }
+}

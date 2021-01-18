@@ -1,0 +1,22 @@
+.item{
+    padding:20px 24px;
+    height: 40px;
+    border-bottom: 1px solid #dbdbdb;
+    font-size:16px;
+    .sub{
+        display: flex;
+        align-items: center;
+        .addr-box{
+            border:1px solid #dbdbdb;
+            width: 40px;
+            height: 15px;
+            text-align: center;
+            font-size:11px;
+            line-height: 15px;
+        }
+        .addr2{
+            font-size:14px;
+            color:#999;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.checkBoxListArea{
+    .allCheckArea{
+       display: inline-block;
+       margin-top: 10px;
+       .allCheckName{
+           display: inline-block;
+           margin-left: 20px;
+           vertical-align: middle;
+       }
+    }
+}

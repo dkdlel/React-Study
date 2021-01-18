@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.AllCheckboxArea{
+    border: 1px solid black;
+    width: 24px; height: 24px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    transition: background-color 1s;
+    vertical-align: middle;
+    &.allCheck{
+        border: none;
+        background-color: gray;
+        transition: background-color 1s;
+    }
+    img {
+        width: 75%; height: 75%;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}

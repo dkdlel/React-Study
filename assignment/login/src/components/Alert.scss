@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.alertWrap{
+    // .shade{
+    //     position:fixed;
+    //     // width: 100%; height: 100%;
+    //     top: 0; right: 0; left: 0; bottom: 0;
+    //     background:#000;
+    //     z-index: 2000;
+    //     opacity:.3;
+    // }
+    .alertArea{
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3000;
+        background: #FFFFFF;
+        border-radius: 10px;
+        text-align: center;
+        .alertContent{
+            width: 360px; height: 296px;
+            border-radius: 10px 10px 0 0;
+            border: 1px solid #DBDBDB;
+            border-bottom: none;
+            .alertTitle{
+                font-size: 22px;
+                font-weight: bold;
+                position: relative;
+                top: 40%;
+                transform: translateY(-50%);
+            }
+            .alertText{
+                font-size: 16px;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        .confirmArea{
+            width: 360px; height: 64px;
+            background: #008762;
+            border-radius: 0 0 10px 10px;
+            cursor: pointer;
+            .confirmText{
+                font-size: 18px;
+                font-weight: bold;
+                color: white;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

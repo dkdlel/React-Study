@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.boxArea{
+    border: 1px solid black;
+    width: 24px; height: 24px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin: 24px;
+    background-color: white;
+    transition: background-color 1s;
+    vertical-align: middle;
+    &.checked{
+        border: none;
+        background-color: gray;
+        transition: background-color 1s;
+    }
+    img {
+        width: 75%; height: 75%;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}

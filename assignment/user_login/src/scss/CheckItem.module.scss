@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.selectCheckbox {
+  position: relative;
+  margin: 20px 0;
+  .boxArea {
+    cursor: pointer;
+    margin-right: 17px;
+    display: inline-block;
+    position: relative;
+    &.checked {
+      path{
+        stroke: #007246;
+        transition: stroke 0.3s;
+      }
+    }
+  }
+  .showText {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: underline;
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .subText {
+    width: 199px; height: 30px;
+    font-weight: 400;
+    font-size: 12px;
+    position: absolute;
+    margin-top: 10px;
+    left: 9%;
+    color: #999;
+    letter-spacing: -1px;
+    line-height: 15px;
+  }
+}

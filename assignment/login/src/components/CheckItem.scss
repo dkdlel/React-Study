@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.selectCheckbox {
+  position: relative;
+  margin: 20px 0;
+  .boxArea {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 5px;
+    display: inline-block;
+    position: relative;
+    background-color: #dbdbdb;
+    vertical-align: middle;
+    transition: background-color 0.3s;
+    &.checked {
+      border: none;
+      background-color: #008762;
+      transition: background-color 0.3s;
+    }
+    img {
+      width: 50%;
+      height: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .showText {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: underline;
+    color: #999999;
+  }
+  .subText {
+    font-size: 13px;
+    position: absolute;
+    left: 10%;
+    color: #777777;
+  }
+}
