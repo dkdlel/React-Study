@@ -8,7 +8,7 @@
     서버로부터 완전한 새로운 페이지를 불러오지 않고 현재의 페이지를 동적으로 다시 작성함으로써 사용자와 소통하는 웹 애플리케이션이나 웹사이트
 
 ## React vs 자바스크립트 프레임워크
-* React : 최대한 성능을 아끼고 UX를 제공하면서 구현하고자 개발한 것, 오직 V(View)만 신경쓰는 <span style="color:red">**라이브러리**</span> 
+* React : 최대한 성능을 아끼고 UX를 제공하면서 구현하고자 개발한 것, 오직 V(View)만 신경쓰는 **라이브러리**   
 * 다른 프레임워크 : MVC(Model-View-Controller), MVVM(Model-View-View-Model)아키텍처를 사용
 
 |이름|역할|
