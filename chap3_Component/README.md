@@ -46,6 +46,7 @@
     ```
     const array = [1,2]; const one = array[0]; const two = array[1];
     -> const array = [1,2]; const[one,two] = array;
+    ```
 
 ## state
 * 컴포넌트 내부에서 바뀔 수 있는 값
