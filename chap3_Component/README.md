@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 컴포넌트
 
-## Available Scripts
+## 컴포넌트의 기능
+1. 데이터가 주어졌을 때 이에 맞추어 UI를 만들어 줌
+2. 라이프사이클 API를 이용하여 컴포넌트가 화면에서 나타날 때, 사라질 때, 변화가 일어날 때 주어진 작업들을 처리
+3. 임의 메서드를 만들어 특별한 기능을 붙여줄 수 있음
 
-In the project directory, you can run:
+## 클래스형 컴포넌트 vs 함수형 컴포넌트
+* 클래스형 컴포넌트
+    - 라이프사이클 기능 사용, 임의 메서드를 정의
+    - render 함수가 꼭 있어야 하고, JSX를 반환
+* 함수형 컴포넌트
+    - 클래스형 컴포넌트보다 선언하기가 훨씬 편함
+    - 메모리 자원을 덜 사용
+    - 배포시 결과물의 파일 크기가 더 작음
+    - state와 라이프사이클 API의 사용이 불가능
+        + Hooks를 통해 비슷한 작업 가능
 
-### `yarn start`
+## 모듈 내보내기 및 불러오기
+* export : 모듈 내보내기
+* import : 모듈 불러오기
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## props
+* properties를 줄인 표현으로 컴포넌트 속성을 설정할 때 사용하는 요소
+* 부모 컴포넌트가 설정
+* defaultProps
+    ```
+    functionName.defaultProps = {
+        props: defaultValue,
+    };
+    ```
+* propTypes, isRequired
+    ```
+    functionName.propTypes = {
+        props: PropTypes.type,
+        props: PropTypes.type.isRequired, // 필수 propTypes 설정
+    };
+    ```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## children
+* 컴포넌트 태그 사이의 내용을 보여 주는 props
 
-### `yarn test`
+## 비구조화 할당(구조 분해 문법)
+* 객체에서 값을 추출하는 문법
+* 배열 비구조화 할당
+    ```
+    const array = [1,2]; const one = array[0]; const two = array[1];
+    -> const array = [1,2]; const[one,two] = array;
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## state
+* 컴포넌트 내부에서 바뀔 수 있는 값
+* 세터(Setter)함수 : 상태를 바꾸어 주는 함수
+* spread 연산자(깊은 복사) : 객체에 대한 사본을 만듬(...)
