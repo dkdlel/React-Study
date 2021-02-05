@@ -14,15 +14,17 @@
     - div, button, input, form, span등 DOM 요소에 이벤트를 설정
 
 ## onKeyPress vs onKeyDown
-<table style="text-align: center;">
-    <tr>
-        <th>onKeyPress</th><th>onKeyDown</th>
-    </tr>
-    <tr>
-        <td colspan="2">키를 눌렀을 때 이벤트 발생</td>
-    <tr>
-    <tr>
-        <td>ASCII 값</td>
-        <td>Keycode값</td>
-    <tr>
+<table>
+    <tbody>
+        <tr>
+            <th>onKeyPress</th><th>onKeyDown</th>
+        </tr>
+        <tr>
+            <td colspan="2">키를 눌렀을 때 이벤트 발생</td>
+        <tr>
+        <tr>
+            <td>ASCII 값</td>
+            <td>Keycode값</td>
+        <tr>
+    </tbody>
 </table>
