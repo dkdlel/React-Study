@@ -15,16 +15,14 @@
 
 ## onKeyPress vs onKeyDown
 <table style="text-align: center;">
-    <tbody>
-        <tr>
-            <th>onKeyPress</th><th>onKeyDown</th>
-        </tr>
-        <tr>
-            <td colspan="2">키를 눌렀을 때 이벤트 발생</td>
-        <tr>
-        <tr>
-            <td>ASCII 값</td>
-            <td>Keycode값</td>
-        <tr>
-    </tbody>
+    <tr>
+        <th>onKeyPress</th><th>onKeyDown</th>
+    </tr>
+    <tr>
+        <td colspan="2">키를 눌렀을 때 이벤트 발생</td>
+    <tr>
+    <tr>
+        <td>ASCII 값</td>
+        <td>Keycode값</td>
+    <tr>
 </table>
