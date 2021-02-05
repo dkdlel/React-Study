@@ -14,7 +14,7 @@
     - div, button, input, form, span등 DOM 요소에 이벤트를 설정
 
 ## onKeyPress vs onKeyDown
-<table>
+<table style="text-align: center;">
     <tbody>
         <tr>
             <th>onKeyPress</th><th>onKeyDown</th>
