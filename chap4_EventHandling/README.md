@@ -17,7 +17,7 @@
 <table>
     <tbody>
         <tr>
-            <th>onKeyPress</th><th>onKeyDown<th>
+            <th>onKeyPress</th><th>onKeyDown</th>
         </tr>
         <tr>
             <td colspan="2">키를 눌렀을 때 이벤트 발생</td>
