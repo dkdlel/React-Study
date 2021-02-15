@@ -17,6 +17,7 @@
 * useImperativeHandle
     - 2개의 argument에서 처음은 부모가 보낸 reference, 그리고 두번째는 자식이 맞춰 보낼 reference로 이는 부모가 reference.current로 접속할 수 있게 맵핑을 해주고 있음
     - 즉, 부모에게 꼭 자식의 실제 reference를 보내지 않고 우리가 원하는 일종의 proxy reference를 보내는게 가능해진다는 것
+    - 라이브러리를 wrapping 할때, 부모에게 자식의 메서드를 넘겨야하는 상황이 발생 할때 useImperativeHandle는 유용하게 사용할 곳이 많을 것 같다.
     ```
     const Child = forwardRef(({ props }, ref) => {
         ...
