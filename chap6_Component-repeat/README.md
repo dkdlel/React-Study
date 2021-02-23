@@ -26,14 +26,15 @@ const newArray = array.concat({...}); // 뒤에 내용을 추가하고
 setArray(newArray); // 새로운 배열을 set
 ```
 ## concat vs push
-* 최적화를 위한 불변성 유지(기존 상태를 그대로 두면서 새로운 값을 상태로 설정)
 |concat|push|
 |:---:|:---:|
 |새로운 배열을 만듬|기존 배열 자체를 변경|
+* 최적화를 위한 불변성 유지(기존 상태를 그대로 두면서 새로운 값을 상태로 설정)
 
 ## filter
 * 데이터 제거 기능
 * 불변성을 유지하면서 배열의 특정 항목을 지움
 ```
-const newArray = array.filter(분류하고 싶은 조건을 반환); 
+const newArray = array.filter(분류하고 싶은 조건을 반환); // 지우고 싶은 항목 지우고
+setArray(newArray); // 새로운 배열을 set
 ```
