@@ -35,3 +35,16 @@ const [state, dispatch] = useReducer(reducer, { value: 0 });
 * 렌더링 과정에서 특정 값이 바뀌었을 때만 연산 실행, 값이 바뀌지 않았다면 이전에 연산했던 결과를 다시 사용
 
 ## useCallback
+* 렌더링 성능을 최적화해야하는 상황에서 사용
+    - 첫번째 파라미터 : 생성하고 싶은 함수
+    - 두번째 파라미터 : 배열
+        + 어떤 값이 바뀌었을때 함수를 새로 생성해야 하는지 명시
+* 함수 내부에서 상태 값에 의존해야 할 때는 그 값을 반드시 두 번째 파라미터 안에 포함해야 함
+
+## useRef
+* 함수형 컴포넌트에서 ref를 쉽게 사용할 수 있도록 해줌
+* 로컬변수(렌더링과 상관없이 바뀔수 있는 값)를 사용할 떄도 활용
+
+## 다른 Hooks
+* https://nikgraf.github.io/react-hooks/
+* https://github.com/rehooks/awesome-react-hooks
