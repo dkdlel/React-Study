@@ -4,7 +4,7 @@
 * 함수형 컴포넌트에서도 가변적인 상태를 지님
 
 ## useEffect
-* 렌더리될 때마다 특정 작업을 수행하도록 설정
+* 렌더링될 때마다 특정 작업을 수행하도록 설정
 * componentDidMount + componentDidUpdate
 
 * 처음 렌더링될 때만(마운트될 때만) 실행할 경우 함수의 두번째 파라미터로 비어 있는 배열을 넣어줌
@@ -43,7 +43,7 @@ const [state, dispatch] = useReducer(reducer, { value: 0 });
 
 ## useRef
 * 함수형 컴포넌트에서 ref를 쉽게 사용할 수 있도록 해줌
-* 로컬변수(렌더링과 상관없이 바뀔수 있는 값)를 사용할 떄도 활용
+* 로컬변수(렌더링과 상관없이 바뀔수 있는 값)를 사용할 때도 활용
 
 ## 다른 Hooks
 * https://nikgraf.github.io/react-hooks/
