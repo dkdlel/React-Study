@@ -27,6 +27,7 @@
         - 물결문자(~)를 통해 자동으로 node_modules에서 라이브러리 디렉터리를 탐지
 
 * Sass vs Scss
+
 |Sass|Scss|
 |:---:|:---:|
 |중괄호와 세미콜론을 사용하지 않음|기존 문법과 크게 다르지 않음|
@@ -42,7 +43,7 @@
 ```
 * JSX엘리멘트에 className={styles.[클래스 이름]} 형태로 전달
 * 백틱(`)을 사용하여 템플릿 리터럴(Template Literal)을 사용하여 문자열을 만듬
-    ### classnames
+    ### *classnames
     * CSS 클래스를 조건부로 설정할때 classnames 라이브러리를 
     * classnames에 내장되어 있는 bind 함수를 사용하여 간결하게 사용가능
     ```
@@ -59,7 +60,7 @@
 * 관련 라이브러리 : https://github.com/MicheleBertoli/css-in-js
 * .css 또는 .scss 확장자를 가진 스타일 파일을 따로 만들지 않아도 됨
 * props 값으로 전달해 주는 값을 쉽게 스타일에 적용할 수 있음
-    ### Tagged 템플릿 리터럴
+    ### *Tagged 템플릿 리터럴
     * 자비스크립트 객체나 함수를 전달할 때 온전히 추출할 수 있음
     * 템플릿 리터럴을 사용하면 템플릿안에 넣은값을 문자열이 아닌 온전한 값으로 추출할 수 있음
     ```
