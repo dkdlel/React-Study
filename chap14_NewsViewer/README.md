@@ -1,5 +1,5 @@
 # 외부 API를 연동하여 뉴스 뷰어 만들기
-* https://newsapi.org 에서 제공하는 API를 사용하여 데이터를 받아옴
+* https://github.com/dkdlel/NewsViewer
 
 ## 비동기 작업
 * 웹 애플리케이션에서 서버 쪽 데이터가 필요할 때는 Ajax 기법을 사용하여 API를 호출함으로써 데이터를 수신
