@@ -1,68 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 외부 API를 연동하여 뉴스 뷰어 만들기
+* https://newsapi.org 에서 제공하는 API를 사용하여 데이터를 받아옴
 
-## Available Scripts
+## 비동기 작업
+* 웹 애플리케이션에서 서버 쪽 데이터가 필요할 때는 Ajax 기법을 사용하여 API를 호출함으로써 데이터를 수신
+* 네트워크 송수신 과정에서 시간이 걸리기 때문에 작업이 즉시 처리되는 것이 아니라, 응답을 받을 때 까지 기다린 후 데이터를 처리
+|동기적|비동기적|
+|:---:|:---:|
+|요청이 끝날때 까지 기다리는 동안 중지 상태|웹 애플리케이션이 멈추지 않음|
+|다른 작업 불가|동시에 여러 요청을 처리, 다른 함수도 호출 가능|
 
-In the project directory, you can run:
+<img src="./image.jpeg" alt="동기적 vs 비동기적" />
 
-### `yarn start`
+## 콜백 함수
+* 비동기의 가장 흔한 방법으로 콜백 함수(setTimeout)를 사용
+    - 여러번 중첩되어 코드의 가독성이 나빠진 코드를 '콜백 지옥'이라고 함
+    - 지양해야 할 형태의 코드
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Promise
+* 콜백 지옥 같은 코드가 형성되지 않게 하는 방안으로 ES6에 도입된 기능
+    - 함수를 여러번 감싸는 것이 아니라 .then을 사용하여 그다음 작업을 설정하기 때문에 콜백 지옥이 형성되지 않음
+* resolve : 성공 / reject : 실패
+* Promise에서 resolve된 값은 .then을 통해 받아 올 수 있음
+* Promise를 return 하면 또 .then으로 처리 가능
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## async / await
+* Promise를 더욱 쉽게 사용할 수 있도록 해주는 ES2017(ES8) 문법
+* 함수 앞부분에 async 키워드를, 해당 함수 내부에서 Promise의 앞부분에 await 키워드를 사용
+    - Promise가 끝날 때 까지 기다리고, 결과 값을 특정 변수에 담을 수 있음
