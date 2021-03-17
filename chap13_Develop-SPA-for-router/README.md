@@ -64,7 +64,8 @@ yarn add react-router-dom
     - 아이디 혹은 이름을 사용하여 조회할 때
         + URL 예시 : /주소/params
     - 라우터로 사용되는 컴포넌트에서 받아오는 match라는 객체안의 params를 참조
-        + path 예시 : /주소/:params
+    - 맨 뒤에 물음표 문자는 params 값이 선택적이라는 의미(있을 수도 있고 없을 수도 있음)
+        + path 예시 : /주소/:params?
 
 * 쿼리 
     - 어떤 키워드를 검색하거나 페이지에 필요한 옵션을 전달할 때
