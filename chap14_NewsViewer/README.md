@@ -28,3 +28,36 @@
 * Promise를 더욱 쉽게 사용할 수 있도록 해주는 ES2017(ES8) 문법
 * 함수 앞부분에 async 키워드를, 해당 함수 내부에서 Promise의 앞부분에 await 키워드를 사용
     - Promise가 끝날 때 까지 기다리고, 결과 값을 특정 변수에 담을 수 있음
+
+## usePromise 커스텀 Hook
+* 프로젝트의 다양한 곳에서 사용될 수 잇는 유틸 함수들은 보통 lib 디렉터리에 작성
+```
+import { useState, useEffect } from "react";
+
+export default function usePromise(promiseCreator, deps) {
+  const [loading, setLoading] = useState(false);
+  const [resolved, setResolved] = useState(null);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const process = async () => {
+      setLoading(true);
+      try {
+        const resolved = await promiseCreator();
+        setResolved(resolved);
+      } catch (e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
+    process();
+  }, deps);
+  return [loading, resolved, error];
+}
+```
+
+```
+const [loading, response, error] = usePromise(() => {
+        const query = (category === 'all' ? '' : `&category=${category}`);
+        return axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=da8b2e5b50cc41edb679702807761afd`);
+    }, [category])
+```

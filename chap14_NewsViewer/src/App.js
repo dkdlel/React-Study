@@ -132,7 +132,7 @@ const App = () => {
   return <Route path="/:category?" component={NewsPage} />;
 }
 
-/* 14.8 usePromise 커스텀 Hook 만들기 (SKIP) */
+/* 14.8 usePromise 커스텀 Hook 만들기 (README 참고) */
 export default App;
 
 
