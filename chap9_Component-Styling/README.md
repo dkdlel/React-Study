@@ -19,6 +19,9 @@
     ```
 
 ## Sass
+```
+yarn add node-sass
+```
 * Sass(Syntactically Awesome Style Sheets)(문법적으로 매우 멋진 스타일시트)
     1. CSS 전처리기로 복잡한 작업을 쉽게 할 수 있도록 해줌
     2. 스타일 코드의 재활용성을 높여 줌
