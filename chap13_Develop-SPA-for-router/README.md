@@ -1,5 +1,7 @@
 # 리액트 라우터로 SPA 개발하기
-* yarn add react-router-dom
+```
+yarn add react-router-dom
+```
 
 ## SPA란?
 * SPA : Single Page Application(싱글 페이지 애플리케이션)
