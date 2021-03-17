@@ -57,7 +57,7 @@ export default function usePromise(promiseCreator, deps) {
 
 ```
 const [loading, response, error] = usePromise(() => {
-        const query = (category === 'all' ? '' : `&category=${category}`);
-        return axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=da8b2e5b50cc41edb679702807761afd`);
-    }, [category])
+    const query = (category === 'all' ? '' : `&category=${category}`);
+    return axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=da8b2e5b50cc41edb679702807761afd`);
+}, [category])
 ```
