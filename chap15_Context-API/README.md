@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Context API
+* 전역적으로 사용할 데이터가 있을 때 유용한 기능
+    - ex) 사용자 로그인 정보, 애플리케이션 환경 설정, 테마 등
 
-## Available Scripts
+## 전역상태 관리 흐름
+* React APP은 컴포넌트 간에 데이터를 props로 전달
+    - 여기저기서 필요한 데이터의 경우 최상위 컴포넌트인 APP에서 상태를 관리
+    - 위 과정에서 다른 컴포넌트에 전달하기 위해서는 여러 컴포넌트를 거쳐야 함
+* 이러한 방식을 사용하면 유지 보수성이 낮아질 가능성이 있음
+* Context API를 사용하면 Context를 만들어 단 한번에 원하는 값을 받아와서 사용할 수 있음
 
-In the project directory, you can run:
+<img src="./ContextAPI.jpeg" alt="Context API를 사용한 전역 상태 관리 흐름" width="300px" height="200px" />
 
-### `yarn start`
+## 사용법
+* 새로운 Context를 만들 때는 createContext 함수를 사용
+    - 파라미터에는 해당 Context의 기본 상태를 지정
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Consumer
+    * Function as a child, Render Props
+        - 컴포넌트의 children이 있어야 할 자리에 일반 JSX 혹은 문자열이 아닌 함수를 전달하는 것
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* Provider
+    * Context의 value를 변경할 수 있음
 
-### `yarn test`
+## useContext Hook
+* 리액트에 내장되어 useContext라는 Hook
+```
+components/ColorBox.js
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+import React, { useContext } from 'react';
+import ColorContext from '../contexts/color';
 
-### `yarn build`
+const ColorBox = () => {
+    const { state } = useContext(ColorContext);
+    return(
+        <>
+            <div 
+                style={{
+                    width: '64px',
+                    height: '64px',
+                    background: state.color,
+                }}
+            />
+            <div 
+                style={{
+                    width: '32px',
+                    height: '32px',
+                    background: state.subcolor,
+                }}
+            />
+        </>
+    );
+};
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export default ColorBox;
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## static contextType
+* 클래스형 컴포넌트에서 Context를 좀 더 쉽게 사용할 수 있음
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+|장점|단점|
+|:---:|:---:|
+|클래스 메서드에서도 Context에 넣어 둔 함수를 호출할 수 있다|한 클래스에서 하나의 Context밖에 사용하지 못함|
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* components/SelectColors.js 참고
