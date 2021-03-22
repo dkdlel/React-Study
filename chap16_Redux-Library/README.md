@@ -1,68 +1,122 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 리덕스 라이브러리 이해하기
+* 가장 많이 사용하는 리액트 상태 관리 라이브러리
 
-## Available Scripts
+## 리덕스
+1. 상태 업데이트 관련 로직을 다른 파일로 분리시켜서 더욱 효율적으로 관리 가능
+2. 컴포넌트끼리 똑같은 상태를 공유해야 할 때 여러 컴포넌트를 거치지 않고 손쉽게 상태값을 전달하거나 업데이트 가능
+3. 프로젝트의 규모가 클 경우에 주로 사용
+    - 상태를 더욱 체계적으로 관리할 수 있기 때문에
+    - 코드의 유지보수성을 높이고, 작업 효율도 극대화
+4. 개발자 도구 지원
+5. 미들웨어라는 기능을 제공하여 비동기 작업을 훨씬 효율적으로 관리 가능
 
-In the project directory, you can run:
+## 리덕스의 세가지 규칙
+1. 단일 스토어
+    - 여러개를 사용하는 것이 완전히 불가능하진 않지만 상태 관리가 복잡해질수 있으므로 권장하지 않음
+2. 읽기 전용 상태
+    - 불변성을 유지해야 함
+    - 내부적으로 데이터가 변경되는 것을 감지하기 위해 얕은 비교 검사를 하기 때문
+3. 리듀서는 순수한 함수
+    * 순수한 함수는 다음 조건을 만족
+        - 이전상태와 액션 객체를 파라미터로 받음
+        - 파라미터 외의 값에는 의존하면 안됨
+        - 이전의 상태는 절대 건디리지 않고, 변화를 준 새로운 상태 객체를 만들어서 반환
+        - 똑같은 파라미터로 호출된 리듀서 함수는 언제나 똑같은 결과 값을 반환
 
-### `yarn start`
+## 액션
+* 상태에 어떠한 변화가 필요하면 액션이 발생
+* type 필드를 반드시 가지고 있어야 함
+    - type의 값 = 액션의 이름
+* 액션 이름은 문자열 형태로, 대문자로 작성하여 고유하게 만듬
+    - 이름이 중복될 경우 의도하지 않은 경과가 발생할 수 있기 때문
+```
+{
+    type: 'ADD_TODO',
+    data:{
+        id: 1,
+        text: '리덕스 배우기'
+    }
+}
+{
+    type: 'CHANGE_INPUT',
+    text: '안녕하세요'
+}
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 액션 생성 함수
+* 액션 객체를 만들어 주는 함수
+* 함수로 만들어서 관리
+    - 어떤 변화를 일으켜야 할 때마다 액션 객체를 생성
+    - 매번 직접 작성하기 번거로움
+    - 실수로 정보를 놓칠 수 있음
+```
+function addTodo(data){
+    return{
+        type: 'ADD_TODO',
+        data
+    };
+}
+// 화살표 함수
+const changeInput = text => ({
+    type: 'CHANGE_INPUT',
+    text
+});
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 리듀서
+* 변화를 일으키는 함수
+    1. 현재 상태와 전달받은 액션 객체를 파라미터로 받아 옴
+    2. 두 값을 참고하여 새로운 상태를 만들어서 반환
+```
+const initialState = {
+    counter: 1
+};
+function reducer(state = initialState, action){
+    switch(action.type){
+        case INCREMENT:
+            return{
+                couter: state.couter + 1
+            };
+        default:
+            return state;
+    }
+}
+```
 
-### `yarn test`
+## 스토어
+* 프로젝트에 리덕스를 적용하기 위함
+* 한 개의 프로젝트는 단 하나의 스토어만 가짐
+    - 현재 애플리케이션 상태와 리듀서가 들어있음
+    - 몇가지 중요한 내장 함수를 지님
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 디스패치
+* 스토어의 내장 함수 중 하나
+    - 액션을 발생시키는 것
+* 이 함수가 호출되면 스토어는 리듀서 함수를 실행시켜 새로운 상태를 만들어 줌
+```
+dispatch(action)
+```
 
-### `yarn build`
+## 구독
+* 스토어의 내장 함수 중 하나
+* subscribe 함수 안에 리스너 함수를 파라미터로 넣어서 호출
+    - 이 리스너 함수가 액션이 디스패치되어 상태가 업데이트될 때마다 호출
+```
+const listener = () => {
+    console.log('상태가 업데이트됨');
+}
+const unsubscribe = store.subscribe(listener);
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+unsubscribe(); // 추후 구독을 비활성화할 때 함수를 호출
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Parcel
+* 이 도구를 사용하면 아주 쉽고 빠르게 웹 애플리케이션 프로젝트를 구성할 수 있음
+```
+// 번들러 설치
+yarn global add parcel-bundler(npm install -g parcel-bundler)
+// package.json 파일 생성
+yarn init -y
+// 개발용 서버 실행(https://localhost:1234/)
+parcel index.html
+```
