@@ -45,7 +45,7 @@ const store = createStore(rootReducer);
 ## Redux DevTools의 설치 및 적용
 * https://chrome.google.com/webstore/ 에서 Redux DevTools를 검색 후 설치
 ```
-yarn add redux-devtools-extenstion
+yarn add redux-devtools-extension
 ```
 ```
 src/index.js
