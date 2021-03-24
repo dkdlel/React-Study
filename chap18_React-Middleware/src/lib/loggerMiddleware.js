@@ -17,8 +17,12 @@ export default loggerMiddleware;
 /*
 위와 동일
 const loggerMiddleware = function loggerMiddleware(store){
+    // store : 리덕스 스토어 인스턴스
     return function(next){
+        // next : store.dispath와 비슷한 역할
+        // next(action) : 그다음 처리해야 할 미들웨어에게 액션을 넘겨줌, 그다음 미들웨어가 없다면 리듀서에게 액션을 넘겨줌
         return fuction(action){
+            // action : 디스패치된 액션
             // 미들웨어 기본 구조
         }
     }
