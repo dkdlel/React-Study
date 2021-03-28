@@ -45,6 +45,7 @@ import('./notify').then(result => result.default());
 * state를 따로 선언하지 않고도 간편하게 컴포넌트 코드 스플리팅을 할 수 있음
 * React.lazy
     - 컴포넌트를 렌더링하는 시점에서 비동기적으로 로딩할 수 있게 해주는 유틸 함수
+
 [공식문서] : https://reactjs.org/docs/code-splitting.html#reactlazy
 ```
 예시
@@ -67,6 +68,7 @@ const SplitMe = React.lazy(() => import('./SplitMe'));
 * 장점
     - 서버 사이드 렌더링을 지원
     - 렌더링하기 전에 필요할 때 스플리팅된 파일을 미리 불러올 수 있음
+    
 [공식문서] : https://loadable-components.com/docs/getting-started/
 ```
 yarn add @loadable/component
