@@ -1,4 +1,4 @@
-# 코드 스필리팅
+# 코드 스플리팅
 * 파일을 분리하는 작업
 
 ## 웹팩(webpack)
@@ -31,3 +31,54 @@ yarn build
     - 파일을 따로 분리시켜서 저장
     - 실제 함수가 필요한 지점에 파일을 불러와서 함수를 사용할 수 있음
 * Promise를 반환
+```
+App.js
+
+import('./notify').then(result => result.default());
+```
+
+## 컴포넌트의 코드 스플리팅
+* state를 사용하여 코드 스플리팅
+    - 매번 state를 선언해 주어야 한다는 점이 조금 불편
+
+## React.lazy와 Suspense
+* state를 따로 선언하지 않고도 간편하게 컴포넌트 코드 스플리팅을 할 수 있음
+* React.lazy
+    - 컴포넌트를 렌더링하는 시점에서 비동기적으로 로딩할 수 있게 해주는 유틸 함수
+[공식문서] : https://reactjs.org/docs/code-splitting.html#reactlazy
+```
+예시
+const SplitMe = React.lazy(() => import('./SplitMe'));
+```
+* Suspense
+    - 리액트 내장 컴포넌트
+    - 코드 스플리팅된 컴포넌트를 로딩하도록 발동
+    - 로딩이 끝나지 않았을 때 보여주는 UI를 설정
+    - fallback props를 통해 로딩 중에 보여줄 JSX 지정가능
+```
+예시
+<Suspense fallback={<div>lading...</div>}>
+    {visible && <SplitMe />}
+</Suspense>
+```
+
+## Loadable Components
+* 코드 스플리팅을 편하게 하도록 도와주는 서드파티 라이브러리
+* 장점
+    - 서버 사이드 렌더링을 지원
+    - 렌더링하기 전에 필요할 때 스플리팅된 파일을 미리 불러올 수 있음
+[공식문서] : https://loadable-components.com/docs/getting-started/
+```
+yarn add @loadable/component
+```
+```
+const SplitMe = loadable(() => import('./SplitMe'));
+
+// 로딩 중에 다른 UI를 보여주고 싶다면 loadable을 사용하는 부분을 수정
+const SplitMe = loadable(() => import('./SplitMe'), {
+  fallback: <div>loading...</div>
+});
+
+// preload : 컴포넌트를 미리 불러오는 방법
+SplitMe.preload();
+```
