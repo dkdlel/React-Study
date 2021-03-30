@@ -46,14 +46,15 @@ yarn eject
 * ReactDomServer.renderToString
     - 서버에서 리액트 컴포넌트를 렌더링 하기위한 함수
     - JSX를 넣어서 호출하면 렌더링 결과를 문자열로 반환
-이상 index.server.js
+
+index.server.js
 <hr />
 
 ## 웹팩 환경 설정 작성하기
 * config/paths.js - 하단부
 ```
 ssrIndexJs: resolveApp('src/index.server.js'), // 서버 사이드 렌더링 엔트리(불러올 파일의 경로)
-ssrBuild: resolveApp('dist'), // 웨백 처리 후 저장 경로(결과물 저장)
+ssrBuild: resolveApp('dist'), // 웹팩 처리 후 저장 경로(결과물 저장)
 ```
 ## 로더 설정
 * 파일을 불러올 때 확장자에 맞게 필요한 처리를 해줌
@@ -100,3 +101,23 @@ yarn add express
 index.server.js
 <hr />
 
+## 데이터 로딩
+* 서버 사이드 렌더링을 구현할 때 해결하기가 매우 까다로운 문제 중 하나
+* 서버의 경우 문자열 형태로 렌더링 하기 때문에 상태가 바뀌어도 자동으로 리렌더링 되지 않음
+    - renderToString() 한번 더 호출
+    - 서버 사이드 렌더링 시 데이터 로딩
+    - redux-thunk or redux-saga 미들웨어를 사용하여 API를 호출
+
+## 서버사이드 렌더링
+* useEffect나 componentDidMout에서 설정한 작업이 호출 되지 않음
+* 렌더링하기 전에 API를 요청한 뒤 스토어에 데이터를 담아야 함
+    - 서버 환경에서 처리하려면 클래스형 컴포넌트의 constructor 메서드나 render함수에서 처리
+    - 요청이 끝날 때까지 대기했다가 다시 렌더링 해주어야 함
+* 서버 사이드 렌더링을 하는 과정에서 처리해야 할 작업들을 실행
+    - 기다려야 하는 promise가 있다면 promise를 수집
+    - 모든 프로미스 수집 후, 수집된 프로미스들이 끝날 때 까지 기다렸다가 다시 렌더링 하면 데이터가 채워진 상태로 컴포넌트들이 나타남
+* renderToStaticMarkup
+    - 리액트를 사용하여 정적인 페이지를 만들 때 사용
+    - renderToString보다 처리 속도가 좀 더 빠름
+
+lib/PreloadContext.js, index.server.js
