@@ -124,7 +124,20 @@ lib/PreloadContext.js, index.server.js
 
 ## 서버 사이드 렌더링과 코드 스플리팅
 * 서버 사이드 렌더링과 코드 스플리팅을 함께 사용할 때는 Loadable Components를 사용할 것을 권장
-    - 서버 유틸 함수와 웹팩 플러그인, babel 플로그인을 제공
+    - 서버 유틸 함수와 웹팩 플러그인, babel 플러그인을 제공
+    - ChunkExtractor와 ChunkExtractorManager를 사용해 어떤 파일을 사전에 불러오고 파일의 경로를 추출
+* 웹팩과 babel 플러그인을 저용하여 깜박임 현상을 해결
+* build/loadable-stats.json에서 각 컴포넌트의 코드가 어떤 chunk 파일에 들어가있는지 확인
 ```
 yarn add @loadable/component @loadable/server @loadable/webpack-plugin @loadable/babel-plugin
 ```
+
+## loadableReady, hydrate
+* loadableReady
+    - 모든 스크립트가 로딩되고 나서 렌더링하도록 처리하기 위함
+* hydrate
+    - 리액트에서 render 함수 대신에 사용가능
+    - 기존에 서버 사이드 렌더링된 결과물이 이미 있을 경우 새로 렌더링 하지 않고 기존 UI에 이벤트만 연동
+        + APP 초기 구동시 필요한 리소스를 최소화
+
+index.js
