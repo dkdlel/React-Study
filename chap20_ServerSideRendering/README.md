@@ -121,3 +121,10 @@ index.server.js
     - renderToString보다 처리 속도가 좀 더 빠름
 
 lib/PreloadContext.js, index.server.js
+
+## 서버 사이드 렌더링과 코드 스플리팅
+* 서버 사이드 렌더링과 코드 스플리팅을 함께 사용할 때는 Loadable Components를 사용할 것을 권장
+    - 서버 유틸 함수와 웹팩 플러그인, babel 플로그인을 제공
+```
+yarn add @loadable/component @loadable/server @loadable/webpack-plugin @loadable/babel-plugin
+```

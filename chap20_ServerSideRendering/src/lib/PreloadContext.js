@@ -24,3 +24,13 @@ export const Preloader = ({ resolve }) => {
     preloadContext.promises.push(Promise.resolve(resolve()));
     return null;
 };
+
+/* 20.4.9 usePreloader Hook 만들어서 사용하기 */
+// Hook 형태로 사용할 수 있는 함수
+// Preloader 컴포넌트를 그냥 함수로 만든 것
+export const usePreloader = resolve => {
+    const preloadContext = useContext(PreloadContext);
+    if (!preloadContext) return null;
+    if (preloadContext.done) return null;
+    preloadContext.promises.push(Promise.resolve(resolve()));
+}
