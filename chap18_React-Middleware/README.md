@@ -66,11 +66,8 @@ yarn add redux-saga
     1.all : 여러 사가를 합쳐주는 역할     
     2.takeEvery : 디스패치되는 모든 액션에 특정 작업을 처리     
     3.takeLatest : 기존에 진행중이던 작업이 있다면 취소처리하고 가장 마직막으로 실행된 작업만 수행     
-    4.call : Promise를 반환하는 함수를 호출하고, 기다릴 수 있음     
-        - call(함수, 해당 함수에 넣을 인수)     
+    4.call : Promise를 반환하는 함수를 호출하고, 기다릴 수 있음 / call(함수, 해당 함수에 넣을 인수)     
     5.put : 특정 액션을 디스패치     
     6.select : 현재 상태를 조회     
-    7.throttle : 사가가 n초에 단 한번만 호출되도록 설정     
-        - throttle(n초 * 1000, 액션, 함수);     
-    8.액션에 마우스 클릭 이벤트가 payload 안에 들어가지 않게 하려면 두번째 파라미터로 () => undefined를 넣어 줌     
-        - counter.js
+    7.throttle : 사가가 n초에 단 한번만 호출되도록 설정 / throttle(n초 * 1000, 액션, 함수);     
+    8.액션에 마우스 클릭 이벤트가 payload 안에 들어가지 않게 하려면 두번째 파라미터로 () => undefined를 넣어 줌 / counter.js
