@@ -25,12 +25,12 @@
     - 코드 스플리팅과의 호환
 
 ## 서버 사이드 렌더링과 코드 스플리팅 충돌
-* 별도의 호환 작업 없이 두 기술을 함께 적용하면, 아래의 흐름으로 페이지 깜박임이 발생
-    1.서버 사이드 렌더링된 결과물이 브라우저에 나타남
-    2.자바스크립트 파일 로딩 시작
-    3.자바스크립트가 실행되면서 아직 불러오지 않는 컴포넌트를 null로 렌더링
-    4.페이지에서 코드 스플리팅된 컴포넌트들이 사라짐
-    5.코드 스플리팅된 컴포넌트들이 로딩된 이후 제대로 나타남
+* 별도의 호환 작업 없이 두 기술을 함께 적용하면, 아래의 흐름으로 페이지 깜박임이 발생     
+    1.서버 사이드 렌더링된 결과물이 브라우저에 나타남     
+    2.자바스크립트 파일 로딩 시작     
+    3.자바스크립트가 실행되면서 아직 불러오지 않는 컴포넌트를 null로 렌더링     
+    4.페이지에서 코드 스플리팅된 컴포넌트들이 사라짐     
+    5.코드 스플리팅된 컴포넌트들이 로딩된 이후 제대로 나타남     
 * Loadable Components 라이브러리를 통해 라우트 경로마다 필요한 모든 파일을 브라우저에서 렌더링하기 전에 미리 불러와야함
 
 ## 서버 사이드 렌더링 구현하기
@@ -98,7 +98,7 @@ yarn add express
 * JS와 CSS파일을 불러오도록 html에 코드를 삽입
     - 매번 빌드할때 마다 불러와야 하는 파일 이름이 다르기 때문에 빌드를 먼저 실행
 
-index.server.js
+이상 index.server.js
 <hr />
 
 ## 데이터 로딩
@@ -121,12 +121,13 @@ index.server.js
     - renderToString보다 처리 속도가 좀 더 빠름
 
 lib/PreloadContext.js, index.server.js
+<hr />
 
 ## 서버 사이드 렌더링과 코드 스플리팅
 * 서버 사이드 렌더링과 코드 스플리팅을 함께 사용할 때는 Loadable Components를 사용할 것을 권장
     - 서버 유틸 함수와 웹팩 플러그인, babel 플러그인을 제공
-    - ChunkExtractor와 ChunkExtractorManager를 사용해 어떤 파일을 사전에 불러오고 파일의 경로를 추출
-* 웹팩과 babel 플러그인을 저용하여 깜박임 현상을 해결
+    - ChunkExtractor와 ChunkExtractorManager를 사용해 브라우저에서 어떤 파일을 사전에 불러와야 하는지, 해당 파일의 경로를 추출
+* 웹팩과 babel 플러그인을 적용하여 깜박임 현상을 해결
 * build/loadable-stats.json에서 각 컴포넌트의 코드가 어떤 chunk 파일에 들어가있는지 확인
 ```
 yarn add @loadable/component @loadable/server @loadable/webpack-plugin @loadable/babel-plugin
