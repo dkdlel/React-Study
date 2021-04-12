@@ -13,3 +13,22 @@
     - 미들웨어 기능만 갖추고 있음
     - 필요한 기능을 붙여서 서버를 만들기 때문에 Express보다 훨씬 가벼움
     - async/await 문법을 정식으로 지원하기 떄문에 비동기 작업을 더 편하게 관리
+
+## Express 미들웨어
+```
+(req, res, next) => {
+}
+```
+* task
+    - Execute any code / 모든 코드를 실행
+    - Make changes to the request and the response objects / 요청과 응답 오브젝트에 대한 변경을 실행
+    - End the request-response cycle / 요청-응답 주기를 종료
+    - Call the next middleware in the stack / 스택의 다음 미들웨어 호출
+* next
+    - 현재의 미들웨어 함수가 요청-응답 주기를 종료하지 않는 경우에는 next()를 호출하여 그 다음 미들웨어 함수에 제어를 전달
+    - 그렇지 않으면 해당 요청은 정지된 채로 방치
+
+<img src="./MiddleWare.png" alt="미들웨어" />
+
+* app.use(path, callback)
+    - 요청된 경로와 path가 일치할 때 미들웨어 기능이 수행
