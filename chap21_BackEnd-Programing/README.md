@@ -32,3 +32,31 @@
 
 * app.use(path, callback)
     - 요청된 경로와 path가 일치할 때 미들웨어 기능이 수행
+
+## nodemon
+* 코드를 변경할 때마다 서버를 자동으로 재시작
+```
+yarn add --dev nodemon
+```
+
+## 라우트 파라미터와 쿼리
+* 파라미터
+    - 콜론(:)을 사용하여 라우트 경로 설정
+    - 있을수도 있고 없을 수도 있다면 파라미터 이름 뒤에 물음표(?)를 사용
+    - req.params 객체에서 조회 가능
+```
+router.get('/:test', (req, res) => {
+    console.log(req.params.test);
+    res.send('Hello Params World!');
+});
+```
+
+* 쿼리
+    - req.query에서 조회 가능
+```
+router.get('/', (req, res) => {
+  console.log(req.query.test);
+  res.send('Hello Query World!');
+});
+```
+

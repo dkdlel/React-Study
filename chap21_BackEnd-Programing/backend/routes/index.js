@@ -1,19 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
-// router.get('/', function (req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+const about = require('./about');
+const post = require('./post');
 
-router.get('/', (req, res) => {
-  console.log(req.query.test);
-  res.send('Hello Query World!');
-});
+router.use('/about', about);
+router.use('/post', post);
 
-router.get('/:test', (req, res) => {
-  console.log(req.params.test);
-  res.send('Hello Params World!');
-});
+// 기본 경로
+router.get('/', (req, res, next) => { res.send("홈"); });
+
 
 module.exports = router;
