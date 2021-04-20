@@ -30,3 +30,19 @@
 ## 서브다큐먼트란?
 * 문서 내부에 또 다른 문서가 위치하는 것
 * 일반 문서를 다루는 것처럼 퀴리할 수 있음
+
+## 설치 및 실행
+* 설치
+```
+brew tap mongodb/brew
+brew install mongodb-community@4.2
+brew services start mongodb-community@4.2
+```
+* 실행
+```
+mongo
+```
+
+## dotenv
+* 환경변수들을 파일에 넣고 사용할 수 있게 하는 개발 도구
+* 민감하거나 환경별로 달라질 수 있는 값은 코드 안에 작성하지 않고, 환경변수로 설정하는 것이 좋음
