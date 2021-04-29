@@ -19,11 +19,11 @@ app.use(express.urlencoded({ extended: false })); // req.body 인식
 app.use(cookieParser()); // 쿠키를 파싱
 app.use(express.static(path.join(__dirname, 'public')));  // build 폴더를 접근할 수 있게 함
 
-const indexRouter = require('./routes/index');
+const apiRouter = require('./routes/index');
 
 // 기본 경로
-app.use('/', (req, res, next) => { res.send("홈"); });
-app.use('/api', indexRouter);
+// app.use('/', (req, res, next) => { res.send("홈"); });
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
